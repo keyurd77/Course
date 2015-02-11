@@ -34,12 +34,4 @@ mean(null>diff) # what proportion of times where this happens
 population
 population = population [,1]
 mean (population)
-# performing the same thing in a more concise manner
-SampleMean <- replicate(10000, mean(sample(population,12))) # assign to the name"sampleMean" 
-#the outcome of replicating
-#10000 times the mean of random variable from the dataset population (choosing 12 random values)
-head(SampleMean)
-plot(SampleMean)
-null <- replicate(10000, mean(sample(population,12)) - mean(sample(population, 12))) # to perform the same thing
-head(null)
-plot(null)
+
