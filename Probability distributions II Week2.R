@@ -77,5 +77,5 @@ hist(p, breaks=100)#Examine the histogram of these population sizes
 plog <- log10(p)# made another vector plog for log10 of population sizes
 hist (plog, breaks=100)# plot histogram of these values
 sd(plog)#standard deviation of the log10 of the sample size of the countries in 1952? 0.7070292
-sqrt(mean((plog - mean(plog))^2))# of the population
+sqrt(mean((plog - mean(plog))^2))# of the population size
 #http://www.usablestats.com/lessons/pop 
