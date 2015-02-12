@@ -39,4 +39,15 @@ mean(x$lifeExp<=60) - mean(x$lifeExp<=40)#What is the proportion of countries in
 #dat1952 = gapminder[ gapminder$year == 1952, ]
 #x = dat1952$lifeExp
 #mean(x <= 60) - mean(x <= 40)
-
+x = dat1952$lifeExp
+mean(x <= 40)
+prop = function(q){
+  mean(x<=q)
+} # plotting the "mean(x$lifeExp<=40)" or "mean(x <= 40)" code using a custom function where 'q' is 
+# the input variable (in this case lifeExp of all countries in the year 1952 
+#as x = dat1952$lifeExp) and the proportion of countries in 'x' dataset that are < or = to 'q'. curly 
+#brackets will apply the code to all rows in the data 'x'.What the proportion here means is that 
+#if you count the number of times x<=40 (no of countries < or = 40 years lifeExp in 1952) and give a vector 'y'
+# y<- x<=40 to it then 'sum(y, na.rm=TRUE)'counting the TRUE will give you the no of countries ie '41'
+# and proportion is then dividing 41/142 = 0.2887323943661972 same as "mean(x <= 40)" or "prop(40)".
+prop(40) # custom function
