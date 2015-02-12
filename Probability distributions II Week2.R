@@ -11,9 +11,19 @@ head(gapminder)# returns first few lines of the data
 #country for the year 1952. Plot a histogram of these 
 #life expectancies to see the spread of the different countries.
 View(gapminder) #see the table
-p<- gapminder[gapminder$year<1953,c(1,4)] # created a vector 'p' extracted the column
+x<- gapminder[gapminder$year<1953,c(1,4)] # created a vector 'x' extracted the column
 #year with values less than 1953 for all rows (as I require only 1952) and combined 
 #columns 1 (country) and 4 (lifeexpectancy)
-p # see the extracted data
-plot(p) # plot
+x # see the extracted data
+plot(x) # plot
+s <- split(x$lifeExp, x$country) # split life exp and country from x
+a<-c(x$lifeExp) # another vector a as lifeexp   
+names(a) <- c(x$country)# and names to a as countries
+barplot(a, las=1, space=0) # plotted a barplot
+hist(a)# hist of 
+install.packages("ggplot2")
+library(ggplot2)      
+bp<-ggplot(x, aes(x=country, y=lifeExp)) + geom_bar(stat="identity", width=0.5)
+bp + theme(axis.text.x = element_text(angle=90, hjust=1, vjust=0.5)) # just 
+#playing around with ggplot2 ;)
 
