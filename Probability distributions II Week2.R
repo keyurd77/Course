@@ -69,8 +69,8 @@ props# same output - it has come back with proportions of countries in 1952 belo
 plot(ecdf(x))
 list(ecdf(x))
 #next video
-#http://en.wikipedia.org/wiki/File:Empirical_Rule.PNG, http://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule
-
+#http://en.wikipedia.org/wiki/File:Empirical_Rule.PNG, 
+#http://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule
 p <- dat1952$pop #Create a vector which gives the population sizes of the countries in 1952
 hist(p, breaks=100)#Examine the histogram of these population sizes
 #(it might help to increase the number of 'breaks')
@@ -79,3 +79,4 @@ hist (plog, breaks=100)# plot histogram of these values
 sd(plog)#standard deviation of the log10 of the sample size of the countries in 1952? 0.7070292
 sqrt(mean((plog - mean(plog))^2))# of the population size
 #http://www.usablestats.com/lessons/pop 
+
