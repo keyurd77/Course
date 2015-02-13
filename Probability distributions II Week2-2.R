@@ -92,10 +92,36 @@ x<- log10(pop) # create a vector x of the log10 of the 1952 population sizes
 qqnorm(x)#https://intellinexus.wordpress.com/2010/11/29/creating-a-q-q-plot/
 #http://onlinestatbook.com/2/advanced_graphs/q-q_plots.html
 #http://commons.wikimedia.org/wiki/File:Normal_distribution_and_scales.gif
-abline(0,1)
+abline(0,1)# plots y=x line
 meanx<- mean(x)
 sdx<-sd(x)
-z<- (x-meanx)/sdx
+z<- (x-meanx)/sdx # z is 
 qqnorm(z)
 abline(0,1)
-max(z)
+max(z)# zscore is x-mean/sd same as what we did in line 98. max z score here is 3.03 means +3.03 
+# standard deviations above mean
+F<-function(q) pnorm(q, mean=mean(x), sd=sd(x)) #normal distribution cumulative density funcition
+#proportion of a normal distribution which is less than or equal to 'q', for a normal with 
+#a given mean and standard deviation
+F(6)# proporation of countries that have a log10 population in 1952 <= 1million, log10 of 
+#1 million is 6 as 10^6.
+n<-length(x)#no of countries in the data to a vector 'n'
+n# give the number 142
+(F(7) - F(6))*n # normal distribution cumulative density function 
+#(proportion) of 7 - 6 (10 million - 1 million) multiplied by number of countries 'n'.
+sum(x > 6 & x <= 7) # this is the actual number in the sample
+# which is 85 but he number above is from a normal distribution considering a population rather than
+#a sample.
+head(pnorm(x, mean=mean(x), sd=sd(x)))
+mean(z)
+sd(z)
+head(pnorm(z))# only a list of few, try F(of the first number in x) so pnorm(z) is applying
+#F function to all data compare with pnorm(z) to see all
+#http://statistics.about.com/od/ProbHelpandTutorials/a/What-Is-The-Normal-Approximation-To-The-Binomial-Distribution.htm
+qqnorm(x) # qq plot of x
+ps <- ((1:n) - 0.5)/n # finding quantiles for the normal distribution?need to read
+qnorm(ps)# find the matching quantiles from vector x in normal distribution
+sort(qnorm(ps))
+sort(x)
+qnorm(ps[1])# finding the first quantile that matches the smalled number in 'x'
+plot(qnorm(ps), sort(x))# plots the q-q plot
