@@ -79,5 +79,23 @@ hist (plog, breaks=100)# plot histogram of these values
 sd(plog)#standard deviation of the log10 of the sample size of the countries in 1952? 0.7070292
 sqrt(mean((plog - mean(plog))^2))# of the population 
 #http://www.usablestats.com/lessons/pop 
-
-
+#Answer: 
+dat1952 = gapminder[ gapminder$year == 1952, ]
+pop = dat1952$pop
+logpop = log10(pop)
+# the sample standard deviation
+sd(logpop)
+# the population standard deviation
+sqrt(mean((logpop - mean(logpop))^2)) 
+#http://en.wikipedia.org/wiki/Standard_deviation#With_sample_standard_deviation
+x<- log10(pop) # create a vector x of the log10 of the 1952 population sizes
+qqnorm(x)#https://intellinexus.wordpress.com/2010/11/29/creating-a-q-q-plot/
+#http://onlinestatbook.com/2/advanced_graphs/q-q_plots.html
+#http://commons.wikimedia.org/wiki/File:Normal_distribution_and_scales.gif
+abline(0,1)
+meanx<- mean(x)
+sdx<-sd(x)
+z<- (x-meanx)/sdx
+qqnorm(z)
+abline(0,1)
+max(z)
