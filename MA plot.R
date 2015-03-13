@@ -29,4 +29,28 @@ plot((r+g)/2,(r-g),lwd=2,cex=0.2,pch=16,
      ylab=expression(paste(log[2]," { ",E[1]," / ",E[2]," }")),
      main=paste0("SD=",signif(sqrt(mean((r-g)^2)),3)))
 abline(h=0,col=2,lwd=2)
+set.seed(12201970)
+before <- runif(6, 5, 8)
+after <- rnorm(6, before*1.05, 2)
+li <- range(c(before, after))
+ymx <- max(abs(after-before))
+par(mfrow=c(1,2))
+plot(before, after, xlab="Before", ylab="After",
+     ylim=li, xlim=li)
+abline(0,1, lty=2, col=1)
+
+
+plot(before, after-before, xlab="Before", ylim=c(-ymx, ymx),
+     ylab="Change (After - Before)", lwd=2)
+abline(h=0, lty=2, col=1)
+
+filename <- "fig8dat.csv"
+url <- "https://github.com/kbroman/Talk_Graphs/raw/master/R/fig8dat.csv"
+if (!file.exists(filename)) download(url, filename)
+x <- read.table(filename, sep=",", header=TRUE)
+plot(x[,1],x[,2],xlab="log Dose",ylab="Proportion survived",ylim=c(0,1),
+     type="l",lwd=2,col=1)
+lines(x[,1],x[,3],lwd=2,col=2)
+lines(x[,1],x[,4],lwd=2,col=3)
+legend(1,0.4,c("Drug A","Drug B","Drug C"),lwd=2, col=1:3)
 
