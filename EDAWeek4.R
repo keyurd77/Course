@@ -100,3 +100,24 @@ plot(time/median(time), ylim=c(1/4,4))
 abline(h=c(1/2,1,2))
 plot(log2(time/median(time)),ylim=c(-2,2))
 abline(h=-1:1)
+library("downloader")
+filename <- "fig1.RData"
+url <- "https://github.com/kbroman/Talk_Graphs/raw/master/R/fig1.RData"
+if (!file.exists(filename)) download(url,filename)
+load(filename)
+par(mfrow=c(1,1))
+dat <- list(Treatment=x,Control=y)
+boxplot(dat,xlab="Group",ylab="Response",xlab="Group",ylab="Response",cex=0)
+stripchart(dat,vertical=TRUE,method="jitter",pch=16,add=TRUE,col=1)
+library(downloader)
+url <- "https://github.com/kbroman/Talk_Graphs/raw/master/R/fig3.RData"
+filename <- "fig3.RData"
+if (!file.exists(filename)) download(url, filename)
+load(filename)
+par(mfrow=c(1,2))
+dat <- list(Treatment=x,Control=y)
+boxplot(dat,xlab="Group",ylab="Response",xlab="Group",ylab="Response",cex=0)
+stripchart(dat,vertical=TRUE,method="jitter",pch=16,add=TRUE,col=1)
+boxplot(dat,xlab="Group",ylab="Response",xlab="Group",ylab="Response",log="y",cex=0)
+stripchart(dat,vertical=TRUE,method="jitter",pch=16,add=TRUE,col=1)
+
