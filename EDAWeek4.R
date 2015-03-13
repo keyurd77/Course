@@ -53,4 +53,50 @@ str(InsectSprays)
 boxplot(split(InsectSprays$count, InsectSprays$spray))
 boxplot(InsectSprays$count~InsectSprays$spray)
 #C
-
+#SCATTERPLOT
+data("father.son")
+x=father.son$fheight
+y=father.son$sheight
+plot(x,y,xlab="Father's height in inches",ylab="Son's height in inches",main=paste("correlation =",signif(cor(x,y),2)))
+groups <- split(y,round(x)) 
+groups
+boxplot(groups)
+print(mean(y[ round(x) == 72]))
+x=(x-mean(x))/sd(x)
+y=(y-mean(y))/sd(y)
+means=tapply(y,round(x*4)/4,mean)
+fatherheights=as.numeric(names(means))
+mypar2(1,1)
+plot(fatherheights,means,ylab="average of strata of son heights",ylim=range(fatherheights))
+abline(0,cor(x,y))
+a=rnorm(100);a[1]=10
+b=rnorm(100);b[1]=11
+plot(a,b,main=paste("correlation =",signif(cor(a,b),2)))
+plot(father.son$fheight, father.son$sheight, main=paste("cor=",signif(cor(father.son$fheight, father.son$sheight),3)))
+identify(father.son$fheight, father.son$sheight)
+#click on the graph after this and hit 'esc' on the keyboard to get row number for that point
+n = nrow(father.son)
+plot(scale(x), scale(y))# scale subtracts the mean and divides by the standard deviation
+abline(h=0, v=0)
+mean(scale(x)*scale(y))#0.5008732
+cor(x,y)
+sum(scale(x) * scale(y)) / (n - 1)
+data(nym.2002)
+head(nym.2002)
+hist(nym.2002$time)
+plot(nym.2002$age, nym.2002$time)
+plot(nym.2002$time, nym.2002$place)
+qqnorm(nym.2002$time)
+qqline(nym.2002$time)
+barplot(tail(sort(table(nym.2002$home)),10))
+boxplot(nym.2002$time~nym.2002$gender)
+time = sort(nym.2002$time)
+head(time)
+median(time)
+time[1]/median(time)
+min(time) / median(time) # 0.5605402
+max(time)/median(time)#2.156368
+plot(time/median(time), ylim=c(1/4,4))
+abline(h=c(1/2,1,2))
+plot(log2(time/median(time)),ylim=c(-2,2))
+abline(h=-1:1)
