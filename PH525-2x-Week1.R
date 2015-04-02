@@ -10,3 +10,17 @@ lines(tt,f,col=2)
 tt2 <-tt^2
 fit <- lm(y~tt+tt2) # function in R to fit the data points and provides LSE (least squares estimate)
 summary(fit)$coef 
+install.packages("UsingR")
+library(UsingR)
+x=father.son$fheight
+y=father.son$sheight
+plot(x,y,xlab="Father's height",ylab="Son's height")
+dat <- read.csv("femaleMiceWeights.csv")
+?father.son
+mean(y)
+groups <- split(y,round(x))
+mean(groups$'71')
+mean(father.son$sheight[round(father.son$fheight)==71])
+install.packages("dplyr")
+library(dplyr)
+filter(father.son,round(fheight)==71) %>% summarize(mean(sheight))
